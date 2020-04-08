@@ -20,10 +20,9 @@ class App extends Component {
     render(){
         return(
             <div>
-            hola react
-         
+        hellow react
             </div>
- 
+         
         )
     }
 }
