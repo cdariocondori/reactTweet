@@ -1,0 +1,41 @@
+{
+  "name": "reacttwit",
+  "version": "1.0.0",
+  "description": "clon de twitter con react",
+  "main": "/build/app.js",
+  "scripts": {
+    "build": "webpack --colors",
+    "serve": "webpack-dev-server --content-base build/ --colors --progress",
+    "start": "npm run build && npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dario Dev",
+  "license": "MIT",
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "moment": "^2.24.0",
+    "normalize-css": "^2.3.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "uuid": "^7.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^3.0.7",
+    "jshint-loader": "^0.8.4",
+    "style-loader": "^1.1.3",
+    "webpack": "^3.8.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
