@@ -140,6 +140,7 @@ renderOpenText(){
                 picture={this.props.user.photoURL}
                 username={this.props.user.email.split('@')[0]}
                 onOpenText={this.handleOpenText}
+                onLogout={this.props.onLogout}
             />
             {this.renderOpenText()}
             <MessageList 

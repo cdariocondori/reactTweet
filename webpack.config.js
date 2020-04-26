@@ -18,7 +18,8 @@ module.exports = {
          publicPath: '/'
     },
     devServer:{
-        port: 4000
+        port: 4000,
+        historyApiFallback: true
     },
     resolve: {
         extensions: ['.js','.jsx']
@@ -37,6 +38,7 @@ module.exports = {
               }
         ]
     },
+
     plugins:[
         new HtmlWebpackPlugin({
             template: './src/assets/index.html'

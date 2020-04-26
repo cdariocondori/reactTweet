@@ -2,8 +2,8 @@ import React , {Component} from 'react';
 
 import moment from 'moment';
 import styles from './message.css';
-
-
+import { Route, Link,  NavLink} from "react-router-dom";
+//import Users from '../users';
 class Message extends Component {
     constructor(props){
         super(props)
@@ -36,15 +36,23 @@ onPressRetweet(){
     render(){
         let dateFormat= moment(this.props.date).fromNow();
         let userLink = `/user/${this.props.username}`;
+        /*
+            <NavLink activeClassName="active" to="/users">
+                     Users
+                     </NavLink>
+        */
         return(
             <div className="root2">
                 <div className="user">
-            
+               
+
+          
+                <Link to={userLink}>
                         <figure>
                             <img className="avatar" src={this.props.picture} />
 
                         </figure>
-               
+                  </Link>
                         <span className="displayName">{this.props.displayName} </span>
                         <span className="username">{this.props.username} </span>
                         <span className="date">{dateFormat} </span>
