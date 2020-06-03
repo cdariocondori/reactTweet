@@ -9,6 +9,7 @@ import InputText from '../InputText';
 
 import ProfileBar from '../ProfileBar';
 
+import firebase from 'firebase';
 
 class Main extends Component{
 
@@ -18,7 +19,8 @@ constructor(props){
         user : Object.assign({}, this.props.user, {retweets: []}, {favorites: []}),
         openText: false,
         userNameToReply :'',
-        messages: [{
+        messages: [
+            /*{
             id: uuidv4(),
             text: 'Mensaje del tweet',
             picture: 'https://as2.ftcdn.net/jpg/01/19/32/93/500_F_119329387_sUTbUdeyhk0nuhNw5WaFvOyQFmxeppjX.jpg',
@@ -37,7 +39,7 @@ constructor(props){
             date: Date.now(),
             retweets: 0,
             favorites: 0
-         }
+         } */
         ]
     }   
     this.handleSendText = this.handleSendText.bind(this);
@@ -46,6 +48,17 @@ constructor(props){
     this.handleRetweet = this.handleRetweet.bind(this);
     this.handleFavorite = this.handleFavorite.bind(this);
     this.handleReplyTweet = this.handleReplyTweet.bind(this);
+}
+
+componentWillMount(){
+    const messagesRef= firebase.database().ref().child('messages')
+    messagesRef.on('child_added', snapshot =>{
+        this.setState({
+            messages: this.state.messages.concat(snapshot.val()),
+            openText:false
+
+        })
+    })
 }
 
 handleReplyTweet(msgId, userNameToReply){
@@ -100,10 +113,15 @@ handleSendText(event){
         displayName: this.props.user.displayName,
         picture : this.props.user.photoURL,
         date: Date.now(),
-        text: event.target.textarea.value
+        text: event.target.textarea.value,
+        retweets: 0,
+        favorites:0
 
     }
     console.log(newMessage);
+    const messageRef=firebase.database().ref().child('messages')
+    const messageID=messageRef.push()
+    messageID.set(newMessage)
     this.setState({
         messages : this.state.messages.concat([newMessage]),
         openText :  false
